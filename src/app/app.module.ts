@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { IssueCardComponent } from './issue-card/issue-card.component';
 import { MarkCardComponent } from './mark-card/mark-card.component';
+import { ViewDetailsComponent } from './view-details/view-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MarkCardComponent } from './mark-card/mark-card.component';
     LoginComponent,
     StudentRegistrationComponent,
     IssueCardComponent,
-    MarkCardComponent
+    MarkCardComponent,
+    ViewDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,8 @@ import { MarkCardComponent } from './mark-card/mark-card.component';
       { path: 'student-registration', component: StudentRegistrationComponent },
       { path: 'issue-card', component: IssueCardComponent },
       { path: 'mark-card', component: MarkCardComponent },
+      { path: 'view-details', component: ViewDetailsComponent },
+
     ])
   ],
   providers: [],
