@@ -1,3 +1,14 @@
-<p>
-  login works!
-</p>
+
+<div class="login-container">
+  <body class="text-center login">
+  <form #f="ngForm" (ngSubmit)="login(f)" class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  <label for="inputEmail" class="sr-only">Username</label>
+  <input ngModel #email name="email" type="email" id="email" class="form-control" placeholder="Username" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input ngModel #password name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+  <button class="btn btn-lg btn-primary btn-block">Login</button>
+  </form>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </body>
+</div>

@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RouterModule } from '@angular/router';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { FormsModule }   from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +17,9 @@ import { IssueCardComponent } from './issue-card/issue-card.component';
 import { MarkCardComponent } from './mark-card/mark-card.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 
+import { AuthService } from './auth.service';
+import { ClassCardComponent } from './class-card/class-card.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,15 +29,18 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
     StudentRegistrationComponent,
     IssueCardComponent,
     MarkCardComponent,
-    ViewDetailsComponent
+    ViewDetailsComponent,
+    ClassCardComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
+      { path: '', component: LoginComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'student-registration', component: StudentRegistrationComponent },
       { path: 'issue-card', component: IssueCardComponent },
       { path: 'mark-card', component: MarkCardComponent },
@@ -40,7 +48,9 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

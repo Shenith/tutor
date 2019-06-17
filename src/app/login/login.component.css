@@ -1,0 +1,24 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+}
+
+.login {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.login-container{
+  text-align: center;
+}

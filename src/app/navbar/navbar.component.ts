@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { User } from 'firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  appUser: any;
+  constructor(private authService: AuthService, public router: Router) {
   }
 
+  async ngOnInit() {
+    await this.authService.afAuth.authState.subscribe(appUser=>this.appUser=appUser)
+  }
+
+  async logout(){
+    await this.authService.afAuth.auth.signOut();
+    localStorage.removeItem('user');
+    this.router.navigate(['']);
+  }
 }

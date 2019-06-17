@@ -12,4 +12,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  addClass(){
+    
+  }
+
+  login(){
+    console.log("hshsh");
+  }
+
 }
