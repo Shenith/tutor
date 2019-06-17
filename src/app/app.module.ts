@@ -19,6 +19,8 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 
 import { AuthService } from './auth.service';
 import { ClassCardComponent } from './class-card/class-card.component';
+import { ClassService } from './class.service';
+import { AddClassFormComponent } from './add-class-form/add-class-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ClassCardComponent } from './class-card/class-card.component';
     IssueCardComponent,
     MarkCardComponent,
     ViewDetailsComponent,
-    ClassCardComponent
+    ClassCardComponent,
+    AddClassFormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +48,13 @@ import { ClassCardComponent } from './class-card/class-card.component';
       { path: 'issue-card', component: IssueCardComponent },
       { path: 'mark-card', component: MarkCardComponent },
       { path: 'view-details', component: ViewDetailsComponent },
+      { path: 'add-class-form', component: AddClassFormComponent },
 
     ])
   ],
   providers: [
     AuthService,
+    ClassService,
   ],
   bootstrap: [AppComponent]
 })

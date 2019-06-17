@@ -1,0 +1,8 @@
+<form #f="ngForm" (ngSubmit)="create(f)" class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Add new class</h1>
+  <label for="inputGrade" class="sr-only">Grade</label>
+  <input ngModel #grade name="grade" type="text" id="grade" class="form-control" placeholder="Grade" required autofocus>
+  <label for="inputSubject" class="sr-only">Subject</label>
+  <input ngModel #subject name="subject" type="text" id="inputSubject" class="form-control" placeholder="Subject" required>
+  <button class="btn btn-lg btn-primary btn-block">Add</button>
+</form>

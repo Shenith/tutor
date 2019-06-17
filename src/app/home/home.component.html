@@ -1,4 +1,9 @@
-<p>
-  home works!
-  <button class="btn btn-primary" (click)="login()">click</button>
-</p>
+<div class="row">
+    <ng-container *ngFor="let c of classes; let i=index">
+        <div class="col">
+          <app-class-card [class]="c"></app-class-card>
+        </div>
+        <div *ngIf="(i+1)%3===0" class="w-100"></div>
+    </ng-container>
+  </div>
+<button class="btn btn-primary" routerLink="/add-class-form">Add class</button>

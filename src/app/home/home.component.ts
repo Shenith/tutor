@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { ClassService } from '../class.service';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -6,18 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  classes: any[] = [];
+  class: any[] = [];
 
-  constructor() { }
+  constructor(private classService: ClassService) {
+    this.classService.getall().pipe(
+      map(changes =>
+        changes.map(c => ({key:c.payload.key,...c.payload.val()}))
+      )
+    ).subscribe(classes => {
+      this.classes = classes;})
+   }
 
   ngOnInit() {
   }
 
   addClass(){
     
-  }
-
-  login(){
-    console.log("hshsh");
   }
 
 }
