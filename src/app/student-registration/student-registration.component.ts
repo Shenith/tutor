@@ -10,6 +10,8 @@ export class StudentRegistrationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    var classDetail = localStorage.getItem('classDetail');
+    console.log(classDetail);
   }
 
 }

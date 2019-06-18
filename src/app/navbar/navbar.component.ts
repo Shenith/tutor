@@ -11,16 +11,21 @@ import { Router } from '@angular/router';
 
 export class NavbarComponent implements OnInit {
   appUser: any;
+  className: any;
+  classDetail: any;
   constructor(private authService: AuthService, public router: Router) {
+    //this.appUser=JSON.parse(localStorage.getItem('user'));
   }
 
   async ngOnInit() {
-    await this.authService.afAuth.authState.subscribe(appUser=>this.appUser=appUser)
+    await this.authService.afAuth.authState.subscribe(appUser=>this.appUser=appUser);
+    
   }
 
   async logout(){
     await this.authService.afAuth.auth.signOut();
     localStorage.removeItem('user');
+    
     this.router.navigate(['']);
   }
 }

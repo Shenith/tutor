@@ -21,6 +21,7 @@ import { AuthService } from './auth.service';
 import { ClassCardComponent } from './class-card/class-card.component';
 import { ClassService } from './class.service';
 import { AddClassFormComponent } from './add-class-form/add-class-form.component';
+import { StudentsService } from './students.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AddClassFormComponent } from './add-class-form/add-class-form.component
   providers: [
     AuthService,
     ClassService,
+    StudentsService,
   ],
   bootstrap: [AppComponent]
 })
