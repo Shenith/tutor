@@ -19,4 +19,9 @@ export class ClassService {
   getall(){
     return this.db.list('/class').snapshotChanges();
   }
+
+  getClass(classDetail){
+    localStorage.setItem('classDetail',JSON.stringify(classDetail));
+    this.router.navigate(['student-registration']);
+  }
 }

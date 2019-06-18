@@ -10,7 +10,7 @@ import { map, take } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   classes: any[] = [];
-  class: any[] = [];
+  classDetail: any = null;
 
   constructor(private classService: ClassService) {
     this.classService.getall().pipe(
@@ -24,8 +24,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  addClass(){
-    
+  getClass(c){
+    this.classDetail = c;
+    this.classService.getClass(c);
   }
+
+
 
 }
