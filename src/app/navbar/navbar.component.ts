@@ -14,18 +14,17 @@ export class NavbarComponent implements OnInit {
   className: any;
   classDetail: any;
   constructor(private authService: AuthService, public router: Router) {
-    //this.appUser=JSON.parse(localStorage.getItem('user'));
+    this.classDetail = JSON.parse(localStorage.getItem('classDetail'));
   }
 
   async ngOnInit() {
     await this.authService.afAuth.authState.subscribe(appUser=>this.appUser=appUser);
-    
+
   }
 
   async logout(){
     await this.authService.afAuth.auth.signOut();
     localStorage.removeItem('user');
-    
     this.router.navigate(['']);
   }
 }
