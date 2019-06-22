@@ -22,6 +22,7 @@ import { ClassCardComponent } from './class-card/class-card.component';
 import { ClassService } from './class.service';
 import { AddClassFormComponent } from './add-class-form/add-class-form.component';
 import { StudentsService } from './students.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { StudentsService } from './students.service';
     AuthService,
     ClassService,
     StudentsService,
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

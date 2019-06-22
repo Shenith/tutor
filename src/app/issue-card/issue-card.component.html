@@ -1,3 +1,15 @@
-<p>
-  issue-card works!
-</p>
+<div class="login-container">
+    <body class="text-center login">
+    <form #f="ngForm" class="form-signin">
+    
+    <label for="studentNumber" class="sr-only">Student Number</label>
+    <input ngModel #studentNumber name="studentNumber" type="studentNumber" id="studentNumber" class="form-control" placeholder="Student Number" required autofocus>
+    <h5 *ngIf="sName">{{sName}}</h5>
+    <div>
+        <button class="btn btn-primary" (click)="check(f)">Check</button>
+        <button class="btn btn-primary" (click)="done(f)">Done</button>
+    </div>
+    </form>
+    <div *ngIf="error" class="alert alert-danger"></div>
+    </body>
+  </div>
