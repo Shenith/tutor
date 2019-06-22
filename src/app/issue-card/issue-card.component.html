@@ -1,10 +1,17 @@
+<button class="btn btn-primary" routerLink="/home">Change Class</button>
+<button class="btn btn-primary" routerLink="/student-registration">Register Student</button>
+<button class="btn btn-primary" routerLink="/issue-card">Issue Crad</button>
+<button class="btn btn-primary" routerLink="/mark-card">Mark Card</button>
+<h1 class="h3 mb-3 font-weight-normal">Issue Card</h1>
+<h1 class="h4 mb-3 font-weight-normal">Grade {{classDetail.grade}} {{classDetail.subject}}</h1>
 <div class="login-container">
     <body class="text-center login">
     <form #f="ngForm" class="form-signin">
     
     <label for="studentNumber" class="sr-only">Student Number</label>
     <input ngModel #studentNumber name="studentNumber" type="studentNumber" id="studentNumber" class="form-control" placeholder="Student Number" required autofocus>
-    <h5 *ngIf="sName">{{sName}}</h5>
+    <h5 *ngIf="sName">Name : {{sName}}</h5>
+    <h5 *ngIf="lastPayedDate">Last Payed Date: {{lastPayedDate}}</h5>
     <div>
         <button class="btn btn-primary" (click)="check(f)">Check</button>
         <button class="btn btn-primary" (click)="done(f)">Done</button>
@@ -13,3 +20,4 @@
     <div *ngIf="error" class="alert alert-danger"></div>
     </body>
   </div>
+  

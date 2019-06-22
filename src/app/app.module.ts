@@ -23,6 +23,8 @@ import { ClassService } from './class.service';
 import { AddClassFormComponent } from './add-class-form/add-class-form.component';
 import { StudentsService } from './students.service';
 import { DatePipe } from '@angular/common';
+import { NavbarService } from './navbar.service';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { DatePipe } from '@angular/common';
     MarkCardComponent,
     ViewDetailsComponent,
     ClassCardComponent,
-    AddClassFormComponent
+    AddClassFormComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { DatePipe } from '@angular/common';
       { path: 'mark-card', component: MarkCardComponent },
       { path: 'view-details', component: ViewDetailsComponent },
       { path: 'add-class-form', component: AddClassFormComponent },
+      { path: 'main-page', component: MainPageComponent },
 
     ])
   ],
@@ -59,6 +63,7 @@ import { DatePipe } from '@angular/common';
     ClassService,
     StudentsService,
     DatePipe,
+    NavbarService
   ],
   bootstrap: [AppComponent]
 })

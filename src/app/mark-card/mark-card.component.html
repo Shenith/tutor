@@ -1,3 +1,22 @@
-<p>
-  mark-card works!
-</p>
+<button class="btn btn-primary" routerLink="/home">Change Class</button>
+<button class="btn btn-primary" routerLink="/student-registration">Register Student</button>
+<button class="btn btn-primary" routerLink="/issue-card">Issue Crad</button>
+<button class="btn btn-primary" routerLink="/mark-card">Mark Card</button>
+
+<div class="login-container">
+    <h1 class="h3 mb-3 font-weight-normal">Mark Student Attendance</h1>
+    <h1 class="h4 mb-3 font-weight-normal">Grade {{classDetail.grade}} {{classDetail.subject}}</h1>
+    <body class="text-center">
+    <form #f="ngForm" class="form-signin">
+    
+    <label for="studentNumber" class="sr-only">Student Number</label>
+    <input ngModel #studentNumber name="studentNumber" type="studentNumber" id="studentNumber" class="form-control" placeholder="Student Number" required autofocus>
+    <h5 *ngIf="sName">Name : {{sName}}</h5>
+    <h5 *ngIf="lastPayedDate">Last Payed Date: {{lastPayedDate}}</h5>
+    <div>
+        <button class="btn btn-primary" (click)="check(f)">Check</button>
+        <button class="btn btn-primary" (click)="next()">Next</button>
+    </div>
+    </form>
+    </body>
+  </div>

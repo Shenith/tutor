@@ -20,9 +20,17 @@ export class StudentsService {
     return r;
   }
 
-  issueCard(sId,date){
-    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/cardIssueDate/').set({date})
-    //this.db.list('/class/' + this.classDetail.key + '/issueCards/').push(student);
+  issueCard(sId,date,lastPayedDate){
+    this.db.list('/class/' + this.classDetail.key + '/students/' + sId + '/paymentHistory/').push({lastPayedDate});
+    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/cardIssueDate/').set({date});
+  }
+
+  issueFirstCard(sId,date){
+    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/cardIssueDate/').set({date});
+  }
+
+  markCard(sId,date){
+    return this.db.list('/attendance/' + this.classDetail.key + '/students/' + sId + '/attendance/').push({date})
   }
 
 

@@ -22,6 +22,5 @@ export class ClassService {
 
   getClass(classDetail){
     localStorage.setItem('classDetail',JSON.stringify(classDetail));
-    this.router.navigate(['student-registration']);
   }
 }
