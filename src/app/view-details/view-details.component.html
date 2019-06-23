@@ -1,4 +1,5 @@
-  <div class="sticky-top">
+
+  <div class="sticky">
     <div class="list-group">
       <button class="list-group-item list-group-item-action" 
       *ngFor="let c of classes"
@@ -22,12 +23,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let s of students">
-      <td>{{s.studentDetails.name}}</td>
-      <td>{{s.studentNumber}}</td>
-      <td>{{s.studentDetails.address}}</td>
-      <td>{{s.studentDetails.phone}}</td>
-      <td>{{s.studentDetails.school}}</td>
-      <td>{{s.cardIssueDate.date}}</td>
+      <td *ngIf="s.studentDetails" (click)="attendance(s.key)">{{s.studentDetails.name}}</td>
+      <td *ngIf="s.studentNumber">{{s.studentNumber}}</td>
+      <td *ngIf="s.studentDetails">{{s.studentDetails.address}}</td>
+      <td *ngIf="s.studentDetails">{{s.studentDetails.phone}}</td>
+      <td *ngIf="s.studentDetails">{{s.studentDetails.school}}</td>
+      <td *ngIf="s.cardIssueDate">{{s.cardIssueDate.date}}</td>
     </tr>
   </tbody>
 </table>

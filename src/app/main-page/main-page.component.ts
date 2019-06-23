@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
+  navLinks = [
+    {path: '/student-registration', label: 'Register Student'},
+    {path: '/issue-card', label: 'Add Payment'},
+    {path: '/mark-card', label: 'Mark Attendance'},
+  ];
+
   constructor() { }
 
   ngOnInit() {

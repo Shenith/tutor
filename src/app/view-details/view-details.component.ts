@@ -2,7 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ClassService } from '../class.service';
 import { map } from 'rxjs/operators';
 import { StudentsService } from '../students.service';
-import { DataTableResource } from 'angular7-data-table';
+import { MatDialog } from '@angular/material/dialog';
+import { AttendanceComponent } from '../attendance/attendance.component';
+
+
 
 @Component({
   selector: 'app-view-details',
@@ -12,14 +15,11 @@ import { DataTableResource } from 'angular7-data-table';
 export class ViewDetailsComponent implements OnInit {
   classes:any;
   students: any;
-  studentCount: number;
+  attendanceRecord:any; 
 
-  items:any[];
-  itemCount:number;
-
-  tableResource: DataTableResource<any[]>
-
-  constructor(private classService: ClassService, private studentsService : StudentsService) { }
+  constructor(private classService: ClassService, 
+    private studentsService : StudentsService,
+    public dialog: MatDialog) { }
 
   async ngOnInit() {
     return await this.classService.getall().pipe(
@@ -32,19 +32,21 @@ export class ViewDetailsComponent implements OnInit {
   }
 
    async view(c){
+     localStorage.setItem('classId', JSON.stringify(c.key));
     await this.studentsService.getClassStudents(c.key).pipe(
       map(changes =>
         changes.map(c => ({key:c.payload.key,...c.payload.val()}))
       )
     ).subscribe(data => {
       this.students = data;
+      console.log(this.students);
     });
   }
 
-  reloadItems(params){
-    if(!this.tableResource) return;
-
-    this.tableResource.query(params)
-    .then( items => this.items = items );
+  attendance(sId){
+    localStorage.setItem('sId', JSON.stringify(sId));
+    this.dialog.open(AttendanceComponent, {
+    });
   }
-}
+  }
+

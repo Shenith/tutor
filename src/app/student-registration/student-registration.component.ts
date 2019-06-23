@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-student-registration',
@@ -10,7 +12,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class StudentRegistrationComponent implements OnInit {
   classDetail: any;
   studentNumber: any;
-  constructor(private studentService:StudentsService, private db:AngularFireDatabase) { }
+  constructor(private studentService:StudentsService, private db:AngularFireDatabase, private router: Router) { }
 
   ngOnInit() {  
     this.refreshPage();
@@ -19,7 +21,6 @@ export class StudentRegistrationComponent implements OnInit {
   refreshPage() {
     this.classDetail = JSON.parse(localStorage.getItem('classDetail'));
     this.db.list('/class/' + this.classDetail.key + '/students').snapshotChanges().subscribe(items=>{
-      console.log(items.length);
       this.studentNumber = items.length + 1;
     })
     
@@ -27,9 +28,10 @@ export class StudentRegistrationComponent implements OnInit {
 
   
   async register(f){
-    console.log(f.value);
+    f.reset();
+    //this.router.navigate(['issue-card']);
     await this.studentService.create(f.value,this.studentNumber);
-    this.refreshPage();
+    
   }
 
 }

@@ -11,7 +11,9 @@ export class StudentsService {
   constructor(private db:AngularFireDatabase, private router: Router) { }
   create(newStudent,studentNumber){
     this.classDetail = JSON.parse(localStorage.getItem('classDetail'));
-    return this.db.list('/class/' + this.classDetail.key + '/students').push({studentDetails:newStudent, studentNumber: studentNumber});
+    let r = this.db.list('/class/' + this.classDetail.key + '/students').push({studentDetails:newStudent, studentNumber: studentNumber});
+    console.log(r);
+    return r;
   };
 
   getAll(){

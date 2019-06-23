@@ -1,0 +1,13 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Attendance Record</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of attendanceRecord">
+        <td *ngIf="a.date">{{a.date}}</td>
+      </tr>
+    </tbody>
+    
+  </table>

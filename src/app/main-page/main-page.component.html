@@ -1,4 +1,15 @@
-<button class="btn btn-primary" routerLink="/home">Change Class</button>
+<!-- <button class="btn btn-primary" routerLink="/home">Change Class</button>
 <button class="btn btn-primary" routerLink="/student-registration">Register Student</button>
 <button class="btn btn-primary" routerLink="/issue-card">Issue Crad</button>
-<button class="btn btn-primary" routerLink="/mark-card">Mark Card</button>
+<button class="btn btn-primary" routerLink="/mark-card">Mark Card</button> -->
+<nav mat-tab-nav-bar>
+        <a mat-tab-link
+           *ngFor="let link of navLinks"
+           [routerLink]="link.path"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          {{link.label}}
+        </a>
+      </nav>
+      
+<router-outlet></router-outlet>

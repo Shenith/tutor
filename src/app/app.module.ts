@@ -6,6 +6,8 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FormsModule }   from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
+import {NoopAnimationsModule , BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatTabsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +29,8 @@ import { DatePipe } from '@angular/common';
 import { NavbarService } from './navbar.service';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AuthGuardService } from './auth-guard.service';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -41,14 +45,21 @@ import { AuthGuardService } from './auth-guard.service';
     ClassCardComponent,
     AddClassFormComponent,
     MainPageComponent,
+    AttendanceComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatTabsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     DataTableModule,
+    MatDialogModule,
+    MatButtonModule, 
+    MatCheckboxModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -60,6 +71,10 @@ import { AuthGuardService } from './auth-guard.service';
       { path: 'main-page', component: MainPageComponent,canActivate: [AuthGuardService] },
 
     ])
+  ],
+  entryComponents:[
+    AttendanceComponent,
+    LoginComponent,
   ],
   providers: [
     AuthService,
