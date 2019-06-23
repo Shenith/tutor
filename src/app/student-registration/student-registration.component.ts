@@ -28,10 +28,10 @@ export class StudentRegistrationComponent implements OnInit {
 
   
   async register(f){
+    
+    await this.studentService.create(f.value,this.studentNumber);
     f.reset();
     //this.router.navigate(['issue-card']);
-    await this.studentService.create(f.value,this.studentNumber);
-    
   }
 
 }

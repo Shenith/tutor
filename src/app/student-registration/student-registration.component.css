@@ -1,0 +1,8 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container > * {
+    width: 60%;
+  }
