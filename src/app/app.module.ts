@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FormsModule }   from '@angular/forms';
+import { DataTableModule } from 'angular7-data-table';
 
 
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { StudentsService } from './students.service';
 import { DatePipe } from '@angular/common';
 import { NavbarService } from './navbar.service';
 import { MainPageComponent } from './main-page/main-page.component';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -46,15 +48,16 @@ import { MainPageComponent } from './main-page/main-page.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    DataTableModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'student-registration', component: StudentRegistrationComponent },
-      { path: 'issue-card', component: IssueCardComponent },
-      { path: 'mark-card', component: MarkCardComponent },
-      { path: 'view-details', component: ViewDetailsComponent },
-      { path: 'add-class-form', component: AddClassFormComponent },
-      { path: 'main-page', component: MainPageComponent },
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
+      { path: 'student-registration', component: StudentRegistrationComponent, canActivate: [AuthGuardService] },
+      { path: 'issue-card', component: IssueCardComponent, canActivate: [AuthGuardService] },
+      { path: 'mark-card', component: MarkCardComponent, canActivate: [AuthGuardService] },
+      { path: 'view-details', component: ViewDetailsComponent, canActivate: [AuthGuardService] },
+      { path: 'add-class-form', component: AddClassFormComponent, canActivate: [AuthGuardService] },
+      { path: 'main-page', component: MainPageComponent,canActivate: [AuthGuardService] },
 
     ])
   ],
@@ -63,7 +66,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     ClassService,
     StudentsService,
     DatePipe,
-    NavbarService
+    NavbarService,
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })

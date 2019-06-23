@@ -20,6 +20,10 @@ export class StudentsService {
     return r;
   }
 
+  getClassStudents(classKey){
+    return this.db.list('/class/' + classKey + '/students').snapshotChanges();
+  }
+
   issueCard(sId,date,lastPayedDate){
     this.db.list('/class/' + this.classDetail.key + '/students/' + sId + '/paymentHistory/').push({lastPayedDate});
     return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/cardIssueDate/').set({date});

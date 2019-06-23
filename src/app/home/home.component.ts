@@ -4,6 +4,7 @@ import { ClassService } from '../class.service';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NavbarService } from '../navbar.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   classes: any[] = [];
   classDetail: any = null;
 
-  constructor(private classService: ClassService, private router: Router, private navbarService: NavbarService) {
+  constructor(private classService: ClassService, private router: Router) {
 
    }
 
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
         changes.map(c => ({key:c.payload.key,...c.payload.val()}))
       )
     ).subscribe(classes => {
-      this.classes = classes;})
+      this.classes = classes;});
   }
 
   getClass(c){
