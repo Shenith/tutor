@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class StudentRegistrationComponent implements OnInit {
   studentDetail: any;
   studentCode: any;
 
-  constructor(private studentService:StudentsService, private db:AngularFireDatabase, private router: Router) { }
+  constructor(private studentService:StudentsService, private db:AngularFireDatabase, private snackBar: MatSnackBar) { }
 
   ngOnInit() {  
     this.refreshPage();
@@ -44,11 +45,16 @@ export class StudentRegistrationComponent implements OnInit {
     
   }
 
-  
+  openSnackBar(messege){
+    this.snackBar.open(this.studentCode + messege , "" , {duration: 3000});
+  }
+
+
   async register(f){
     if(f.value.name){
       await this.studentService.create(f.value,this.studentNumber);
     f.reset();
+    this.openSnackBar(" Registered successfully!");
     this.refreshPage();
     }
   }

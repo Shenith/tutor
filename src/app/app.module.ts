@@ -7,7 +7,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
 import {NoopAnimationsModule , BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatTabsModule, MatFormFieldModule, MatInputModule, MatGridListModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatTabsModule, MatFormFieldModule, MatInputModule, MatGridListModule, MatSnackBarModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -62,7 +62,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     DataTableModule,
     MatDialogModule,
     MatGridListModule,
-    MatButtonModule, 
+    MatButtonModule,
+    MatSnackBarModule,
     MatCheckboxModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },

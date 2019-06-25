@@ -3,7 +3,7 @@
 <form class="student-registration" #f="ngForm" (ngSubmit)="register(f)">
   <h1 class="h3 mb-3 font-weight-normal">Student Registration</h1>
   <h1 class="h4 mb-3 font-weight-normal">Grade {{classDetail.grade}} {{classDetail.subject}}</h1>
-  <h1 class="h5 mb-3 font-weight-normal">New Student number {{studentCode}}</h1>
+  <h1 class="h5 mb-3 font-weight-normal">Last Student number {{studentCode}}</h1>
   <div class="container">
       <mat-form-field>
         <input ngModel name="name" type="text" #name matInput required placeholder="Student Name">
