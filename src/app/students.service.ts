@@ -8,11 +8,17 @@ import { map, take } from 'rxjs/operators';
 })
 export class StudentsService {
   classDetail: any;
+  firstLetter: String;
+  firstNumber: String;
+  studentNumber: String;
+
   constructor(private db:AngularFireDatabase, private router: Router) { }
   create(newStudent,studentNumber){
     this.classDetail = JSON.parse(localStorage.getItem('classDetail'));
-    let r = this.db.list('/class/' + this.classDetail.key + '/students').push({studentDetails:newStudent, studentNumber: studentNumber});
-    console.log(r);
+    this.firstLetter = this.classDetail.subject.charAt(0).toUpperCase() + this.classDetail.subject.charAt(1).toUpperCase();
+    this.firstNumber = this.classDetail.grade;
+    this.studentNumber = (this.firstLetter + "" + this.firstNumber + "" + studentNumber.toString());
+    let r = this.db.list('/class/' + this.classDetail.key + '/students').push({studentDetails:newStudent, studentNumber: this.studentNumber});
     return r;
   };
 

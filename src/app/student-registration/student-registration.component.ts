@@ -11,27 +11,46 @@ import { Router } from '@angular/router';
 })
 export class StudentRegistrationComponent implements OnInit {
   classDetail: any;
-  studentNumber: any;
+  studentNumber: any = 1;
+  studentDetail: any;
+  studentCode: any;
+
   constructor(private studentService:StudentsService, private db:AngularFireDatabase, private router: Router) { }
 
   ngOnInit() {  
     this.refreshPage();
+
   }
 
   refreshPage() {
+    
     this.classDetail = JSON.parse(localStorage.getItem('classDetail'));
+
     this.db.list('/class/' + this.classDetail.key + '/students').snapshotChanges().subscribe(items=>{
-      this.studentNumber = items.length + 1;
+      if(items.length>0){
+        this.studentDetail = items[items.length-1].payload.val();
+        this.studentCode = this.studentDetail.studentNumber;
+        if(this.classDetail.grade<10){
+          this.studentNumber = parseInt(this.studentDetail.studentNumber.slice(3), 10)+1;
+        } else{
+          this.studentNumber = parseInt(this.studentDetail.studentNumber.slice(4), 10)+1;
+        }
+        
+      } else {
+        this.studentCode = 1;
+      }
+      
     })
     
   }
 
   
   async register(f){
-    
-    await this.studentService.create(f.value,this.studentNumber);
+    if(f.value.name){
+      await this.studentService.create(f.value,this.studentNumber);
     f.reset();
-    //this.router.navigate(['issue-card']);
+    this.refreshPage();
+    }
   }
 
 }
