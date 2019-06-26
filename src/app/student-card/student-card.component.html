@@ -1,0 +1,24 @@
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <div>
+        <h3>Name:</h3>
+        <p>{{studentName}}</p>
+        <h3>Phone Number:</h3>
+        <p >{{studentPhone}}</p>
+        <h3>School:</h3>
+        <p>{{studentSchool}}</p>
+        <h3>Address:</h3>
+        <p>{{studentAddress}}</p>
+        <h3>Student Number:</h3>
+        <p>{{studentCode}}</p>
+        
+        <button mat-raised-button color="primary" routerLink="/main-page">Go Back</button>
+
+    </div>
+      
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <app-qr-generater></app-qr-generater>
+  </mat-grid-tile>
+</mat-grid-list>
+

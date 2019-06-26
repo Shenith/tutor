@@ -31,6 +31,9 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { QRCodeModule } from 'angularx-qrcode';
+import { QrGeneraterComponent } from './qr-generater/qr-generater.component';
+import { StudentCardComponent } from './student-card/student-card.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddClassFormComponent,
     MainPageComponent,
     AttendanceComponent,
+    QrGeneraterComponent,
+    StudentCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatGridListModule,
     MatButtonModule,
     MatSnackBarModule,
+    QRCodeModule,
     MatCheckboxModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
@@ -74,12 +80,14 @@ import { MatDialogModule } from '@angular/material/dialog';
       { path: 'view-details', component: ViewDetailsComponent, canActivate: [AuthGuardService] },
       { path: 'add-class-form', component: AddClassFormComponent, canActivate: [AuthGuardService] },
       { path: 'main-page', component: MainPageComponent,canActivate: [AuthGuardService] },
+      { path: 'student-card', component: StudentCardComponent,canActivate: [AuthGuardService] },
 
     ])
   ],
   entryComponents:[
     AttendanceComponent,
     LoginComponent,
+    StudentCardComponent,
   ],
   providers: [
     AuthService,

@@ -24,6 +24,7 @@
     "@angular/router": "~7.2.0",
     "angular7-data-table": "^1.0.9",
     "angularfire2": "^5.2.1",
+    "angularx-qrcode": "^1.6.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
     "firebase": "^6.1.1",

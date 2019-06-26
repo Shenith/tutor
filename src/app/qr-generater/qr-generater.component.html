@@ -1,0 +1,2 @@
+<button mat-raised-button color="primary" *ngIf="!yes" (click)="generate()">Generate</button>
+<qrcode *ngIf="yes" [qrdata]="myAngularxQrCode" [size]="256" [level]="'M'" ></qrcode>
