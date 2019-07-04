@@ -1,0 +1,11 @@
+<form class="qr-code-generater" #f="ngForm" (ngSubmit)="generate(f)">
+  <h1 class="h3 mb-3 font-weight-normal">QR Code Generaer</h1>
+  <div class="container">
+      <mat-form-field>
+        <input ngModel name="sNumber" type="text" #sNumber matInput required placeholder="Student Number">
+      </mat-form-field>
+    </div>
+    <button type="submit" mat-raised-button color="primary">Generate QR Code</button>
+</form>
+
+<qrcode *ngIf="yes" [qrdata]="myAngularxQrCode" [size]="256" [level]="'M'" ></qrcode>

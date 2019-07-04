@@ -17,7 +17,8 @@ export class ClassService {
   };
 
   getall(){
-    return this.db.list('/class').snapshotChanges();
+    let ref = this.db.list('/class',ref=>ref.orderByChild('grade')).snapshotChanges();
+    return ref;
   }
 
   getClass(classDetail){

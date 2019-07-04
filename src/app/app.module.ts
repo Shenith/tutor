@@ -34,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { QRCodeModule } from 'angularx-qrcode';
 import { QrGeneraterComponent } from './qr-generater/qr-generater.component';
 import { StudentCardComponent } from './student-card/student-card.component';
+import { QrCodeComponent } from './qr-code/qr-code.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { StudentCardComponent } from './student-card/student-card.component';
     AttendanceComponent,
     QrGeneraterComponent,
     StudentCardComponent,
+    QrCodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { StudentCardComponent } from './student-card/student-card.component';
       { path: 'add-class-form', component: AddClassFormComponent, canActivate: [AuthGuardService] },
       { path: 'main-page', component: MainPageComponent,canActivate: [AuthGuardService] },
       { path: 'student-card', component: StudentCardComponent,canActivate: [AuthGuardService] },
+      { path: 'qr-code', component: QrCodeComponent,canActivate: [AuthGuardService] },
 
     ])
   ],

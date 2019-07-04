@@ -18,7 +18,6 @@ export class QrGeneraterComponent implements OnInit {
   constructor(private db:AngularFireDatabase) { 
     
     this.myAngularxQrCode= null;
-    //this.myAngularxQrCode = this.text;
   }
 
   ngOnInit() {
