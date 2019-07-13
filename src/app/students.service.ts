@@ -32,13 +32,13 @@ export class StudentsService {
     return this.db.list('/class/' + classKey + '/students').snapshotChanges();
   }
 
-  issueCard(sId,date,lastPayedDate){
+  issueCard(sId,date,lastPayedDate,month){
     this.db.list('/class/' + this.classDetail.key + '/students/' + sId + '/paymentHistory/').push({lastPayedDate});
-    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/cardIssueDate/').set({date});
+    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/lastPayment/').set({date:date,month:month});
   }
 
-  issueFirstCard(sId,date){
-    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/cardIssueDate/').set({date});
+  issueFirstCard(sId,date,month){
+    return this.db.object('/class/' + this.classDetail.key + '/students/' + sId + '/lastPayment/').set({date:date,month:month});
   }
 
   markCard(sId,date){

@@ -16,6 +16,7 @@ export class StudentRegistrationComponent implements OnInit {
   studentNumber: any = 1;
   studentDetail: any;
   studentCode: any;
+   
 
   constructor(
     private studentService:StudentsService, 

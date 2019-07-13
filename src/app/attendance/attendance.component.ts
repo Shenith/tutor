@@ -21,7 +21,6 @@ export class AttendanceComponent implements OnInit {
     )
   ).subscribe(data => {
     this.attendanceRecord = data;
-    console.log(this.attendanceRecord);
   });
   }
 

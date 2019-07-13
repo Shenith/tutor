@@ -3,7 +3,7 @@
 <button class="btn btn-primary" routerLink="/issue-card">Issue Crad</button>
 <button class="btn btn-primary" routerLink="/mark-card">Mark Card</button> -->
 <app-main-page></app-main-page>
-<h1 class="h3 mb-3 font-weight-normal">Issue Card</h1>
+<h1 class="h3 mb-3 font-weight-normal">Monthly Payment</h1>
 <h1 class="h4 mb-3 font-weight-normal">Grade {{classDetail.grade}} {{classDetail.subject}}</h1>
 <div class="login-container">
     <body class="text-center login">
@@ -11,11 +11,15 @@
     
     <label for="studentNumber" class="sr-only">Student Number</label>
     <input ngModel #studentNumber name="studentNumber" type="studentNumber" id="studentNumber" class="form-control" placeholder="Student Number" required autofocus>
+     <select ngModel #month name="month" id="month" class="form-control">
+            <option value="" selected hidden>Choose Payment Month</option>
+        <option *ngFor="let m of months" [value]="m.id">{{m.name}}</option>
+      </select>
     <h5 *ngIf="sName">Name : {{sName}}</h5>
     <h5 *ngIf="lastPayedDate">Last Payed Date: {{lastPayedDate}}</h5>
     <div>
         <button class="btn btn-primary" (click)="check(f)">Check</button>
-        <button class="btn btn-primary" (click)="done(f)">Done</button>
+        <button [disabled]="btn" class="btn btn-primary" (click)="done(f)">Done</button>
     </div>
     </form>
     <div *ngIf="error" class="alert alert-danger"></div>

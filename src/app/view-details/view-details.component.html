@@ -18,7 +18,7 @@
       <th>Mobile</th>
       <th>School</th>
       <th>Last Payment</th>
-      <th></th>
+      <th>Last Payed Month</th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +28,8 @@
       <td *ngIf="s.studentDetails">{{s.studentDetails.address}}</td>
       <td *ngIf="s.studentDetails">{{s.studentDetails.phone}}</td>
       <td *ngIf="s.studentDetails">{{s.studentDetails.school}}</td>
-      <td *ngIf="s.cardIssueDate">{{s.cardIssueDate.date}}</td>
+      <td *ngIf="s.lastPayment">{{s.lastPayment.date}}</td>
+      <td *ngIf="s.lastPayment">{{s.lastPayment.month}}</td>
     </tr>
   </tbody>
 </table>
